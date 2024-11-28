@@ -1,7 +1,8 @@
 import React from 'react';
 import { Card, CardHeader, CardTitle } from '../ui/card';
-import { Phone, Search, CheckCircle, UserPlus, Filter } from 'lucide-react';
+import { Phone, Search, CheckCircle, UserPlus, Filter, MessageCircle, Mail } from 'lucide-react';
 
+// Rest of the component code remains exactly the same
 export default function CommunicationHub() {
   return (
     <div className="min-h-screen bg-gray-100">
@@ -35,7 +36,7 @@ export default function CommunicationHub() {
       {/* Main Content - Three Column Layout */}
       <div className="mx-auto max-w-screen-2xl px-4 py-8">
         <div className="grid grid-cols-12 gap-6">
-          {/* Today Works - Lista comuni da contattare */}
+          {/* Today Works - Lista comuni da contattare con Quick Actions */}
           <div className="col-span-3">
             <Card className="h-[calc(100vh-180px)] flex flex-col">
               <CardHeader className="border-b">
@@ -56,11 +57,11 @@ export default function CommunicationHub() {
               </div>
               <div className="flex-1 overflow-auto">
                 <div className="divide-y">
-                  {/* Lista comuni ripetuta */}
+                  {/* Lista comuni con quick actions */}
                   {[1, 2, 3, 4, 5].map((i) => (
-                    <div key={i} className="p-4 hover:bg-blue-50 cursor-pointer">
-                      <div className="flex justify-between items-start">
-                        <div>
+                    <div key={i} className="p-4 hover:bg-blue-50">
+                      <div className="flex justify-between items-start mb-2">
+                        <div className="cursor-pointer">
                           <h3 className="font-medium">Comune di Palermo</h3>
                           <div className="text-sm text-gray-500 mt-1">
                             <p>Mario Rossi</p>
@@ -70,6 +71,24 @@ export default function CommunicationHub() {
                         <span className="text-xs bg-orange-100 text-orange-600 px-2 py-1 rounded-full">
                           Priorità Alta
                         </span>
+                      </div>
+                      
+                      {/* Quick Action Buttons */}
+                      <div className="flex gap-2 mt-2">
+                        <button 
+                          className="flex-1 py-1 px-2 bg-green-50 hover:bg-green-100 text-green-600 rounded-md text-sm flex items-center justify-center gap-1 transition-colors"
+                          title="Invia messaggio SMS"
+                        >
+                          <MessageCircle className="w-3 h-3" />
+                          SMS
+                        </button>
+                        <button 
+                          className="flex-1 py-1 px-2 bg-blue-50 hover:bg-blue-100 text-blue-600 rounded-md text-sm flex items-center justify-center gap-1 transition-colors"
+                          title="Invia email"
+                        >
+                          <Mail className="w-3 h-3" />
+                          Email
+                        </button>
                       </div>
                     </div>
                   ))}
@@ -120,14 +139,14 @@ export default function CommunicationHub() {
                         <div className="space-y-2">
                           <label className="flex items-center">
                             <input type="radio" name="channel" className="mr-2" />
-                            <span>WhatsApp</span>
+                            <span>SMS</span>
                           </label>
                           
                           <div className="ml-6 border rounded p-3 bg-gray-50">
                             <div className="flex gap-2">
                               <input 
                                 type="text" 
-                                placeholder="Numero WhatsApp" 
+                                placeholder="Numero SMS" 
                                 className="flex-1 p-2 border rounded"
                               />
                               <button className="px-3 py-2 bg-blue-600 text-white rounded">
@@ -190,7 +209,7 @@ export default function CommunicationHub() {
                         </div>
                         <div className="flex-1">
                           <p className="font-medium">Comune di Palermo</p>
-                          <p className="text-sm text-gray-600">Link inviato via WhatsApp</p>
+                          <p className="text-sm text-gray-600">Link inviato via SMS</p>
                           <div className="flex items-center gap-2 mt-1">
                             <span className="text-xs text-gray-500">Mario Rossi</span>
                             <span className="text-xs text-gray-500">14:30</span>
@@ -207,4 +226,4 @@ export default function CommunicationHub() {
       </div>
     </div>
   );
-}
+} 

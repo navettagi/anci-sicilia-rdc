@@ -1,0 +1,65 @@
+.
+ |-src
+ | |-react-app-env.d.ts
+ | |-reportWebVitals.ts
+ | |-index.css
+ | |-index.tsx
+ | |-layouts
+ | |-App.css
+ | |-logo.svg
+ | |-lib
+ | | |-utils.ts
+ | |-pages
+ | | |-Home.tsx
+ | |-App.tsx
+ | |-components
+ | | |-common
+ | | | |-NavBar.tsx
+ | | |-ui
+ | | | |-card.tsx
+ | | |-communication
+ | | | |-CommunicationHub.tsx
+ | | |-onboarding
+ | | | |-OnboardingPortal.tsx
+ | | | |-CallForm.tsx
+ | | |-dashboard
+ | | | |-ANCIDashboard.tsx
+ | |-setupTests.ts
+ | |-App.test.tsx
+ |-package-lock.json
+ |-postcss.config.js
+ |-project-structure.txt
+ |-build
+ | |-manifest.json
+ | |-favicon.ico
+ | |-logo192.png
+ | |-index.html
+ | |-robots.txt
+ | |-logo512.png
+ | |-asset-manifest.json
+ | |-static
+ | | |-css
+ | | | |-main.b5c36afd.css
+ | | | |-main.b5c36afd.css.map
+ | | |-js
+ | | | |-453.8e6c03e8.chunk.js.map
+ | | | |-main.d62a6555.js
+ | | | |-main.d62a6555.js.LICENSE.txt
+ | | | |-main.d62a6555.js.map
+ | | | |-453.8e6c03e8.chunk.js
+ |-README.md
+ |-package.json
+ |-react-scripts
+ |-README.old.md
+ |-tailwind.config.js
+ |-tsconfig.json
+ |-node_modules
+ |-project_status.txt
+ |-anci-sicilia-rdc@0.1.0
+ |-public
+ | |-manifest.json
+ | |-favicon.ico
+ | |-logo192.png
+ | |-index.html
+ | |-robots.txt
+ | |-logo512.png
