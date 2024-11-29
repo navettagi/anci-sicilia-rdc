@@ -39,13 +39,13 @@
  | |-asset-manifest.json
  | |-static
  | | |-css
- | | | |-main.b5c36afd.css
- | | | |-main.b5c36afd.css.map
+ | | | |-main.fdff5e94.css
+ | | | |-main.fdff5e94.css.map
  | | |-js
  | | | |-453.8e6c03e8.chunk.js.map
- | | | |-main.d62a6555.js
- | | | |-main.d62a6555.js.LICENSE.txt
- | | | |-main.d62a6555.js.map
+ | | | |-main.23b80331.js.map
+ | | | |-main.23b80331.js
+ | | | |-main.23b80331.js.LICENSE.txt
  | | | |-453.8e6c03e8.chunk.js
  |-README.md
  |-package.json
@@ -53,6 +53,7 @@
  |-README.old.md
  |-tailwind.config.js
  |-tsconfig.json
+ |-vite.config.js
  |-node_modules
  |-project_status.txt
  |-anci-sicilia-rdc@0.1.0
