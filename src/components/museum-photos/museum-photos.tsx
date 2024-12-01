@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronLeft, Upload } from 'lucide-react';
+import { Upload } from 'lucide-react';
 
 interface Photo {
   file: File;
@@ -14,6 +14,17 @@ const MuseumPhotos: React.FC = () => {
       const newPhotos = Array.from(event.target.files).map(file => ({ file, description: '' }));
       setPhotos(prevPhotos => [...prevPhotos, ...newPhotos]);
     }
+  };
+
+  const removePhoto = (index: number) => {
+    setPhotos(photos.filter((_, i) => i !== index));
+  };
+
+  const reorderPhotos = (fromIndex: number, toIndex: number) => {
+    const updated = [...photos];
+    const [moved] = updated.splice(fromIndex, 1);
+    updated.splice(toIndex, 0, moved);
+    setPhotos(updated);
   };
 
   const handleDescriptionChange = (index: number, description: string) => {
@@ -40,7 +51,7 @@ const MuseumPhotos: React.FC = () => {
             <span className="text-gray-500">Contatti</span>
             <span className="flex-1 h-1 bg-gray-200"></span>
             <span className="flex items-center justify-center w-8 h-8 rounded-full bg-green-600 text-white">✓</span>
-            <span className="text-gray-500">Musei</span>
+            <span className="text-gray-500">Contatti</span>
             <span className="flex-1 h-1 bg-gray-200"></span>
             <span className="flex items-center justify-center w-8 h-8 rounded-full bg-blue-600 text-white">3</span>
             <span className="font-medium">Foto</span>
@@ -49,63 +60,88 @@ const MuseumPhotos: React.FC = () => {
       </div>
 
       {/* Main Content */}
-      <div className="mx-auto max-w-7xl px-4 py-8">
-        <div className="space-y-6">
-          <div className="bg-white rounded-lg shadow">
-            <div className="p-6">
-              <label htmlFor="photos" className="block text-sm font-medium mb-1">Carica Foto</label>
-              <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
-                <div className="space-y-1 text-center">
-                  <Upload className="mx-auto h-12 w-12 text-gray-400" />
-                  <div className="flex text-sm text-gray-600">
-                    <label
-                      htmlFor="photos"
-                      className="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500"
-                    >
-                      <span>Carica file</span>
-                      <input id="photos" name="photos" type="file" accept="image/*" multiple className="sr-only" onChange={handlePhotoUpload} />
-                    </label>
-                    <p className="pl-1">o trascina qui</p>
-                  </div>
-                  <p className="text-xs text-gray-500">PNG, JPG, GIF fino a 10MB</p>
+      <div className="mx-auto max-w-7xl px-4 py-8 space-y-6">
+        {/* Photo Upload Section */}
+        <div className="bg-white rounded-lg shadow">
+          <div className="p-6">
+            <label htmlFor="photos" className="block text-sm font-medium mb-1">Carica Foto</label>
+            <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+              <div className="space-y-1 text-center">
+                <Upload className="mx-auto h-12 w-12 text-gray-400" />
+                <div className="flex text-sm text-gray-600">
+                  <label
+                    htmlFor="photos"
+                    className="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500"
+                  >
+                    <span>Carica file</span>
+                    <input id="photos" name="photos" type="file" accept="image/*" multiple className="sr-only" onChange={handlePhotoUpload} />
+                  </label>
+                  <p className="pl-1">o trascina qui</p>
                 </div>
+                <p className="text-xs text-gray-500">PNG, JPG, GIF fino a 10MB</p>
               </div>
             </div>
           </div>
+        </div>
 
-          {photos.map((photo, index) => (
-            <div key={index} className="bg-white rounded-lg shadow">
-              <div className="p-6">
-                <img src={URL.createObjectURL(photo.file)} alt={`Foto ${index + 1}`} className="w-full h-60 object-cover rounded-lg" />
-                <div className="mt-4">
-                  <label htmlFor={`description-${index}`} className="block text-sm font-medium mb-1">
-                    Descrizione Foto {index + 1}
-                  </label>
+        {/* Photos Display Section */}
+        {photos.map((photo, index) => (
+          <div key={index} className="bg-white rounded-lg shadow mt-6">
+            <div className="p-6">
+              <div className="flex justify-between items-center mb-4">
+                <h3 className="font-medium">Foto {index + 1}</h3>
+                <div className="flex gap-2">
+                  <button 
+                    onClick={() => index > 0 && reorderPhotos(index, index - 1)}
+                    className="p-2 text-gray-500 hover:bg-gray-100 rounded"
+                  >
+                    ↑
+                  </button>
+                  <button 
+                    onClick={() => index < photos.length - 1 && reorderPhotos(index, index + 1)}
+                    className="p-2 text-gray-500 hover:bg-gray-100 rounded"
+                  >
+                    ↓
+                  </button>
+                  <button 
+                    onClick={() => removePhoto(index)}
+                    className="p-2 text-red-500 hover:bg-red-50 rounded"
+                  >
+                    ×
+                  </button>
+                </div>
+              </div>
+
+              <img 
+                src={URL.createObjectURL(photo.file)} 
+                alt={`Foto ${index + 1}`} 
+                className="w-full h-60 object-cover rounded-lg"
+              />
+
+              <div className="mt-4 space-y-4">
+                <div>
+                  <label className="block text-sm font-medium mb-1">Descrizione</label>
                   <textarea
-                    id={`description-${index}`}
                     className="w-full p-2 border rounded"
                     rows={3}
                     value={photo.description}
                     onChange={e => handleDescriptionChange(index, e.target.value)}
+                    placeholder="Descrivi cosa mostra questa foto..."
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium mb-1">Tags</label>
+                  <input
+                    type="text"
+                    className="w-full p-2 border rounded"
+                    placeholder="es. esterno, facciata, ingresso"
                   />
                 </div>
               </div>
             </div>
-          ))}
-
-          <div className="flex justify-between">
-            <a
-              href="/museum-details"
-              className="flex items-center gap-2 px-4 py-2 border rounded text-gray-600 hover:bg-gray-50"
-            >
-              <ChevronLeft className="w-4 h-4" />
-              Precedente
-            </a>
-            <button className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
-              Completa
-            </button>
           </div>
-        </div>
+        ))}
       </div>
     </div>
   );

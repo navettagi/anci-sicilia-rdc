@@ -94,10 +94,10 @@ const OnboardingPortal = () => {
             <span className="font-medium">Contatti</span>
             <span className="flex-1 h-1 bg-gray-200"></span>
             <span className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-200">2</span>
-            <span className="text-gray-500">Musei</span>
+            <span className="text-gray-500">Contenuti</span>
             <span className="flex-1 h-1 bg-gray-200"></span>
             <span className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-200">3</span>
-            <span className="text-gray-500">Contenuti</span>
+            <span className="text-gray-500">Foto</span>
           </div>
         </div>
       </div>
