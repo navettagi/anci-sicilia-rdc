@@ -1,4 +1,5 @@
 .
+ |-netlify.toml
  |-src
  | |-react-app-env.d.ts
  | |-reportWebVitals.ts
@@ -13,17 +14,24 @@
  | | |-Home.tsx
  | |-App.tsx
  | |-components
+ | | |-museum-photos
+ | | | |-museum-photos.tsx
  | | |-common
  | | | |-NavBar.tsx
+ | | |-anagrafica
+ | | | |-anagrafica.tsx
+ | | |-kanban
+ | | | |-kanban.tsx
  | | |-ui
  | | | |-card.tsx
  | | |-communication
  | | | |-CommunicationHub.tsx
  | | |-onboarding
  | | | |-OnboardingPortal.tsx
- | | | |-CallForm.tsx
  | | |-dashboard
  | | | |-ANCIDashboard.tsx
+ | | |-museum-details
+ | | | |-museum-details.tsx
  | |-setupTests.ts
  | |-App.test.tsx
  |-package-lock.json
@@ -49,11 +57,23 @@
  | | | |-453.8e6c03e8.chunk.js
  |-README.md
  |-package.json
+ |-index.html
  |-react-scripts
  |-README.old.md
  |-tailwind.config.js
  |-tsconfig.json
  |-vite.config.js
+ |-dist
+ | |-manifest.json
+ | |-assets
+ | | |-index-912c7968.js
+ | | |-web-vitals-60d3425a.js
+ | | |-index-a1700988.css
+ | |-favicon.ico
+ | |-logo192.png
+ | |-index.html
+ | |-robots.txt
+ | |-logo512.png
  |-node_modules
  |-project_status.txt
  |-anci-sicilia-rdc@0.1.0

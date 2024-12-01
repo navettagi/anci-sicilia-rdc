@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { Home, Phone, FileText, BarChart } from 'lucide-react';
+import { Home, Phone, FileText, BarChart, Layout, Database } from 'lucide-react';
 
 export default function NavBar() {
   const navigate = useNavigate();
@@ -24,6 +24,26 @@ export default function NavBar() {
             </button>
 
             <button
+              onClick={() => navigate('/anagrafica')}
+              className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${
+                isActive('/anagrafica') ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-500'
+              }`}
+            >
+              <Database className="w-4 h-4 mr-2" />
+              Anagrafica
+              </button>
+
+            <button
+              onClick={() => navigate('/board')}
+              className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${
+                isActive('/board') ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-500'
+              }`}
+            >
+              <Layout className="w-4 h-4 mr-2" />
+              Board
+            </button>
+
+            <button
               onClick={() => navigate('/communication')}
               className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${
                 isActive('/communication') ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-500'
@@ -31,16 +51,6 @@ export default function NavBar() {
             >
               <Phone className="w-4 h-4 mr-2" />
               Comunicazioni
-            </button>
-
-            <button
-              onClick={() => navigate('/onboarding')}
-              className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${
-                isActive('/onboarding') ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-500'
-              }`}
-            >
-              <FileText className="w-4 h-4 mr-2" />
-              Onboarding
             </button>
 
             <button
@@ -52,6 +62,15 @@ export default function NavBar() {
               <BarChart className="w-4 h-4 mr-2" />
               Dashboard
             </button>
+
+            <button
+              onClick={() => navigate('/onboarding')}
+              className="inline-flex items-center px-1 pt-1 text-sm font-bold text-red-600"
+            >
+              <FileText className="w-4 h-4 mr-2" />
+              Onboarding
+            </button>
+         
           </div>
         </div>
       </div>
