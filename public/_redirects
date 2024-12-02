@@ -1,0 +1,14 @@
+# _redirects
+/* /index.html 200
+
+# Alternative: netlify.toml
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# If using React Router with basename, you might need:
+[[redirects]]
+  from = "/your-base-name/*"
+  to = "/index.html"
+  status = 200

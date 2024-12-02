@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Building, Clock, Ticket, Users, Info, ChevronRight, ChevronLeft } from 'lucide-react';
 
 interface MuseumDetailsProps {
@@ -25,6 +26,8 @@ export default function MuseumDetails({ onPrevious, onNext }: MuseumDetailsProps
     reducedCategories: [],
     freeCategories: []
   });
+
+  const navigate = useNavigate();
 
   const defaultCategories = {
     reduced: [
@@ -266,14 +269,14 @@ export default function MuseumDetails({ onPrevious, onNext }: MuseumDetailsProps
         {/* Navigation */}
         <div className="flex justify-between mt-8">
           <button
-            onClick={() => window.location.href = '/onboarding'}
+            onClick={() => navigate('/onboarding')}
             className="flex items-center gap-2 px-4 py-2 border rounded text-gray-600"
           >
             <ChevronLeft className="w-4 h-4" />
             Indietro
           </button>
           <button
-            onClick={() => window.location.href = '/museum-photos'}
+            onClick={() => navigate('/museum-photos')}
             className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
           >
             Avanti
