@@ -8,6 +8,7 @@ import KanbanBoard from './components/kanban/kanban';
 import MuseumDetails from './components/museum-details/museum-details';
 import MuseumPhotos from './components/museum-photos/museum-photos';
 import Anagrafica from './components/anagrafica/anagrafica';
+import DettaglioScheda from './components/dettaglio-scheda/dettaglio-scheda';
 import Home from './pages/Home';
 
 const App: React.FC = () => {
@@ -26,6 +27,7 @@ const App: React.FC = () => {
             <Route path="/museum-details" element={<MuseumDetails />} />
             <Route path="/museum-photos" element={<MuseumPhotos />} />
             <Route path="/anagrafica" element={<Anagrafica />} />
+            <Route path="/dettaglio-scheda" element={<DettaglioScheda />} />
           </Routes>
         </main>
       </div>

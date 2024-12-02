@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { Home, Phone, FileText, BarChart, Layout, Database } from 'lucide-react';
+import { Home, Phone, FileText, BarChart, Layout, Database, ClipboardList } from 'lucide-react';
 
 export default function NavBar() {
   const navigate = useNavigate();
@@ -31,7 +31,7 @@ export default function NavBar() {
             >
               <Database className="w-4 h-4 mr-2" />
               Anagrafica
-              </button>
+            </button>
 
             <button
               onClick={() => navigate('/board')}
@@ -41,6 +41,16 @@ export default function NavBar() {
             >
               <Layout className="w-4 h-4 mr-2" />
               Board
+            </button>
+
+            <button
+              onClick={() => navigate('/dettaglio-scheda')}
+              className={`inline-flex items-center px-1 pt-1 text-sm font-medium ${
+                isActive('/dettaglio-scheda') ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-500'
+              }`}
+            >
+              <ClipboardList className="w-4 h-4 mr-2" />
+              Dettaglio Scheda
             </button>
 
             <button
@@ -70,7 +80,6 @@ export default function NavBar() {
               <FileText className="w-4 h-4 mr-2" />
               Onboarding
             </button>
-         
           </div>
         </div>
       </div>
